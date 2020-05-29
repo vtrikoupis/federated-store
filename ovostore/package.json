@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"lerna run --scope @ovostore/* --parallel start\" \"yarn serve\"",
+    "build": "lerna run --scope @ovostore/* build",
+    "serve": "lerna run --scope @ovostore/* --parallel serve",
+    "clean": "lerna run --scope @ovostore/* --parallel clean"
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

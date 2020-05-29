@@ -1,9 +1,21 @@
 {
+  "version": "0.0.0",
   "private": true,
+  "workspaces": {
+    "packages": [
+      "ovostore/*"
+    ]
+  },
+  "devDependencies": {
+    "husky": "4.2.5",
+    "lerna": "3.20.2",
+    "prettier": "2.0.4",
+    "pretty-quick": "2.0.1",
+    "concurrently": "5.2.0"
+  },
   "scripts": {
-    "start": "concurrently \"lerna run --scope @redux-reducer-injection/* --parallel start\" \"yarn serve\"",
-    "build": "lerna run --scope @redux-reducer-injection/* build",
-    "serve": "lerna run --scope @redux-reducer-injection/* --parallel serve",
-    "clean": "lerna run --scope @redux-reducer-injection/* --parallel clean"
+    "submodules": "git pull --recurse-submodules",
+    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
+    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\""
   }
 }
