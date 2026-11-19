@@ -1,12 +1,14 @@
 {
   "private": true,
   "scripts": {
-    "start": "concurrently \"lerna run --scope @ovostore/* --parallel start\" \"yarn serve\"",
-    "build": "lerna run --scope @ovostore/* build",
-    "serve": "lerna run --scope @ovostore/* --parallel serve",
-    "clean": "lerna run --scope @ovostore/* --parallel clean"
+    "start": "concurrently --kill-others-on-fail \"npm run watch:apps\" \"npm run serve\"",
+    "watch:apps": "concurrently --kill-others-on-fail \"npm --prefix app1 run start\" \"npm --prefix app2 run start\"",
+    "build": "npm --prefix app1 run build && npm --prefix app2 run build",
+    "serve": "concurrently --kill-others-on-fail \"npm --prefix app1 run serve\" \"npm --prefix app2 run serve\"",
+    "clean": "npm --prefix app1 run clean && npm --prefix app2 run clean"
   },
   "dependencies": {
-    "concurrently": "^5.2.0"
-  }
+    "concurrently": "^9.2.0"
+  },
+  "name": "ovostore"
 }
