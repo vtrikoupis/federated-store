@@ -38,6 +38,8 @@ module.exports = {
       name: 'app1',
       library: { type: 'var', name: 'app1' },
       filename: 'remoteEntry.js',
+      remoteType: 'script',
+      remotes: { app2: 'app2@http://localhost:3002/remoteEntry.js' },
       shared: ['react', 'react-dom'],
     }),
     new HtmlWebpackPlugin({
